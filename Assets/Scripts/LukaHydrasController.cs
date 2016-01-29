@@ -3,6 +3,9 @@ using System.Collections;
 
 public class LukaHydrasController: MonoBehaviour 
 {
+	public Lulek leviLulek;
+	public Lulek desniLulek;
+	
 	SixenseHand[] 	m_hands;
 
 	Vector3	m_baseOffset;
@@ -24,10 +27,26 @@ public class LukaHydrasController: MonoBehaviour
 
 		foreach ( SixenseHand hand in m_hands )
 		{
-			if ( IsControllerActive( hand.m_controller ) && hand.m_controller.GetButtonDown( SixenseButtons.START ) )
+			if ( IsControllerActive( hand.m_controller ) )
 			{
-				bResetHandPosition = true;
+				if(hand.m_controller.GetButton(SixenseButtons.TRIGGER)){
+					switch (hand.m_hand) {
+					case SixenseHands.LEFT:
+						leviLulek.SpawnPiss ();
+						break;
+					case SixenseHands.RIGHT:
+						desniLulek.SpawnPiss ();
+						break;
+					default:
+						break;
+					}
+				}
+
+				if(hand.m_controller.GetButtonDown( SixenseButtons.START )){
+					bResetHandPosition = true;
+				}
 			}
+
 
 			if ( m_bInitialized )
 			{

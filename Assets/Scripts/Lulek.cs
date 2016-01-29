@@ -19,11 +19,15 @@ public class Lulek : MonoBehaviour
 
 	void Update ()
     {
-	    if (curek != null)
-        {
-            GameObject temp = (GameObject)Instantiate(curek, gameObject.transform.position, Quaternion.identity);
-            addForce(temp.GetComponent<Rigidbody>());
-        }
+	    
+	}
+
+	public void SpawnPiss(){
+		if (curek != null)
+		{
+			GameObject temp = (GameObject)Instantiate(curek, gameObject.transform.position, Quaternion.identity);
+			addForce(temp.GetComponent<Rigidbody>());
+		}
 	}
 
     void addForce(Rigidbody rb)

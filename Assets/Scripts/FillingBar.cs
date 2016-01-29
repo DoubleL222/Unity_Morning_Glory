@@ -11,7 +11,7 @@ public class FillingBar : MonoBehaviour {
 	
 	Image FillBar; //image that is bar
 	int CountHits = 0;
-	public int modeBar = 1;
+	public int modeBar;
 	//// <summary>
 	/// Custom tipe for setting image fillnes 
 	/// </summary>
@@ -25,8 +25,9 @@ public class FillingBar : MonoBehaviour {
 		}
 		set 
 		{
-	 	    if(FillBar != null)
-		        FillBar.fillAmount = value/100f;	
+			if (FillBar != null) {
+					FillBar.fillAmount = value / 100f;
+			}
 		} 
     }
 
@@ -36,6 +37,7 @@ public class FillingBar : MonoBehaviour {
 	void Start () {
 		FillBar = gameObject.GetComponent<Image>();		
 		if(modeBar == 1){
+			Debug.Log ("settin fill bar to 0");
 			ValueBar = 0;
 		}
 		if(modeBar == 2){
@@ -45,7 +47,8 @@ public class FillingBar : MonoBehaviour {
  	}	
 
  	void Update(){
- 		CountHits += (int)(10 * Time.deltaTime);
+ 		//CountHits += (int)(10 * Time.deltaTime);
+		CountHits = 1;
  		if(modeBar == 1){
  			ValueBar += CountHits;
  		}

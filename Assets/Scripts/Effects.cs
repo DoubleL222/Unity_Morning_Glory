@@ -36,7 +36,7 @@ public class Effects : MonoBehaviour {
 			  break;
 			case 2:
 			  LightSource.SetActive(false);
-			  blurOptimized.enabled = true;
+				blurOptimized.enabled = false;
 			  break;
 			case 0:
 			  LightSource.SetActive(false);

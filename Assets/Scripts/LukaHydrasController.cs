@@ -5,6 +5,7 @@ public class LukaHydrasController: MonoBehaviour
 {
 	public Lulek leviLulek;
 	public Lulek desniLulek;
+	public Scoring scoringScript;
 	
 	SixenseHand[] 	m_hands;
 
@@ -33,9 +34,11 @@ public class LukaHydrasController: MonoBehaviour
 					switch (hand.m_hand) {
 					case SixenseHands.LEFT:
 						leviLulek.SpawnPiss ();
+						scoringScript.PlayerAmountDecrease(1);
 						break;
 					case SixenseHands.RIGHT:
 						desniLulek.SpawnPiss ();
+						scoringScript.PlayerAmountDecrease(2);
 						break;
 					default:
 						break;

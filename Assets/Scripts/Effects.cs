@@ -18,7 +18,11 @@ public class Effects : MonoBehaviour {
 	private int zacKotRotacije = 45;
 	private int trKotRotacije = 0;
 	private int smerRotacije = 1; 
-	private float stopnjaOpitost = 5.0f;
+	private float stopnjaOpitost = 10.0f;
+	private float kvocientOpitostiPlus = 5f;
+	private float kvocientOpitostiMinus = -1f;
+	private float kvocientOpitosti = 0.0f;
+
 
 	private Vector3 startPosition;
 	//private float odaljenKoeficient = 10.0f;
@@ -29,6 +33,9 @@ public class Effects : MonoBehaviour {
 	/// setting in which mode player is
 	/// </summary>
 	void Start(){
+
+		kvocientOpitosti = kvocientOpitostiPlus;
+
 		switch (LevelMode) {
 			case 1:
 			  LightSource.SetActive(true);
@@ -36,7 +43,7 @@ public class Effects : MonoBehaviour {
 			  break;
 			case 2:
 			  LightSource.SetActive(false);
-				blurOptimized.enabled = false;
+				blurOptimized.enabled = true;
 			  break;
 			case 0:
 			  LightSource.SetActive(false);
@@ -63,9 +70,12 @@ public class Effects : MonoBehaviour {
 		}
 
 		//Bluring effect
-		while (blurOptimized.blurSize < stopnjaOpitost){
-			//Debug.Log(blurOptimized.blurSize.ToString());
-			blurOptimized.blurSize +=0.001f * Time.fixedDeltaTime;
+		blurOptimized.blurSize += kvocientOpitosti * Time.fixedDeltaTime;
+		if (blurOptimized.blurSize >= stopnjaOpitost){
+			kvocientOpitosti = kvocientOpitostiMinus;
+		}
+		if(blurOptimized.blurSize < 0){
+			kvocientOpitosti = kvocientOpitostiPlus;
 		}
 
 	}

@@ -12,16 +12,8 @@ public class Scoring : MonoBehaviour {
 
 	public int player1Score = 0;
 	public int player2Score = 0;
-	public int amountOfScanje = 100;
-
-	void Update(){
-		//spawnam piss in odstejem kolicino 
-		if(amountOfScanje > 0){
-			lulekScript.SpawnPiss();
-			amountOfScanje--;
-		}
-	}
-
+	public int amountOfScanjePly1 = 100;
+	public int amountOfScanjePly2 = 100;
 
 	/// <summary>
 	/// Function that cheks if player hit the toilet and add points to his score
@@ -37,6 +29,17 @@ public class Scoring : MonoBehaviour {
 			player2Score += 1;
 			//destroy pee
 			Destroy(collision.collider.gameObject, 0.0f);
+		}
+	}
+
+	public void PlayerAmountDecrease(int player){
+		switch (player) {
+			case 1:
+			  amountOfScanjePly1--;
+			  break;
+			case 2:
+			  amountOfScanjePly2--;
+			  break;
 		}
 	}
 

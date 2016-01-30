@@ -14,15 +14,19 @@ public class Effects : MonoBehaviour {
 	[SerializeField] GameObject LightSource;
 	[SerializeField] BlurOptimized blurOptimized;
 	[SerializeField] GameObject cameraPosition;
-//	private int OnOff = 1;
+	//Luc
 	private int zacKotRotacije = 45;
 	private int trKotRotacije = 0;
 	private int smerRotacije = 1; 
+	//Pijanost
 	private float stopnjaOpitost = 10.0f;
 	private float kvocientOpitostiPlus = 5f;
 	private float kvocientOpitostiMinus = -1f;
 	private float kvocientOpitosti = 0.0f;
-
+	//Camera
+	private float kotObracanja = 50.0f;
+	private float trKotObr = 0;
+	private int smerObracanja = 2;
 
 	private Vector3 startPosition;
 	//private float odaljenKoeficient = 10.0f;
@@ -58,26 +62,36 @@ public class Effects : MonoBehaviour {
 	/// funtions that creates flasihn light
 	/// vsakem fixed upadtu rotitam camero za eno stopinjo v trenutno smer ko pridem 
 	//do te pozicije obrnem v dugo smer
-	/// TODO: disbli se nepotrebne premike
 	/// </summary>
 
 	void Update(){
-		LightSource.transform.Rotate(0,1 * smerRotacije,0, Space.Self);
-		trKotRotacije += smerRotacije;
-		if(Math.Abs(trKotRotacije) >= Math.Abs(zacKotRotacije)){
-			zacKotRotacije *= -1;
-			smerRotacije *= -1; //pristeje minus v naslednem zato ne potrbujemo nastaviti na 1 manj
-		}
-
-		//Bluring effect
-		blurOptimized.blurSize += kvocientOpitosti * Time.fixedDeltaTime;
-		if (blurOptimized.blurSize >= stopnjaOpitost){
-			kvocientOpitosti = kvocientOpitostiMinus;
-		}
-		if(blurOptimized.blurSize < 0){
-			kvocientOpitosti = kvocientOpitostiPlus;
-		}
-
+		switch (LevelMode) {
+			case 1:
+				LightSource.transform.Rotate(0,1 * smerRotacije,0, Space.Self);
+				trKotRotacije += smerRotacije;
+				if(Math.Abs(trKotRotacije) >= Math.Abs(zacKotRotacije)){
+					zacKotRotacije *= -1;
+					smerRotacije *= -1; //pristeje minus v naslednem zato ne potrbujemo nastaviti na 1 manj
+				}	  
+			  break;
+			case 2:
+				//Bluring effect
+				blurOptimized.blurSize += kvocientOpitosti * Time.fixedDeltaTime;
+				if (blurOptimized.blurSize >= stopnjaOpitost){
+					kvocientOpitosti = kvocientOpitostiMinus;
+				}
+				if(blurOptimized.blurSize < 0){
+					kvocientOpitosti = kvocientOpitostiPlus;
+				}	  
+			  break;
+			case 0:
+				cameraPosition.transform.Rotate(0, smerObracanja,0, Space.Self);
+				trKotObr += smerObracanja;
+				if(Math.Abs(trKotObr) >= Math.Abs(kotObracanja)){
+					smerObracanja *= -1;
+				}
+			  break;
+			}
 	}
 
 	// void Update(){

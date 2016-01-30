@@ -50,8 +50,8 @@ public class Scoring : MonoBehaviour {
 			double razdalja = Math.Round(PitagorovIzrek(sredina, collision.contacts[0].point), 1, MidpointRounding.ToEven);
 			double pretekliCas = Math.Round(System.Convert.ToDouble(zacetniCas - Time.time), 1, MidpointRounding.ToEven);
 			player2Score += 1 - 1 * razdalja - 0.01 * pretekliCas;
-			Debug.Log("Pretekli cas:" + (0.01 * pretekliCas).ToString());
-			Debug.Log("Player score:" + player2Score.ToString());
+			//Debug.Log("Pretekli cas:" + (0.01 * pretekliCas).ToString());
+			//Debug.Log("Player score:" + player2Score.ToString());
 			//destroy pee
 			Destroy(collision.collider.gameObject, 0.0f);
 		}

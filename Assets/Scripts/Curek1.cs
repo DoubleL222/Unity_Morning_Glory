@@ -41,10 +41,10 @@ public class Curek1 : MonoBehaviour
     
 	void addRandomForce(Rigidbody rb, Transform kTransform)
     {
-		
         Vector3 random = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 2f), Random.Range(-1f, 1f));
-		//Vector3 randomScale = new Vector3(Random.Range(
-        //rb.AddForce(random * 30);
-      //  rb.velocity = random;
+		float randomS = Random.Range (0.01f, 0.05f);
+		Vector3 randomScale = new Vector3 (randomS, randomS, randomS);
+        rb.AddForce(random * 30);
+		kTransform.localScale = randomScale;
     }
 }

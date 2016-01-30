@@ -23,7 +23,8 @@ public class Curek1 : MonoBehaviour
 
     void OnCollisionEnter(Collision c)
     {
-		if (c.gameObject.tag != "CurekLevi" && c.gameObject.tag != "CurekDesni")//če ni isti curek
+        //if (c.gameObject.tag != "CurekLevi" && c.gameObject.tag != "CurekDesni")
+        if (c.gameObject.tag != gameObject.tag)//če ni isti curek
         {
             if (kapljica != null)
             {

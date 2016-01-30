@@ -19,7 +19,7 @@ public class Lulek : MonoBehaviour
 
 	void Update ()
     {
-        
+        //SpawnPiss();
 	}
 
 	public void SpawnPiss(){
@@ -47,7 +47,5 @@ public class Lulek : MonoBehaviour
                 rb.AddForce(-transform.right * moč);
                 break;
         }
-         
-    
     }
 }

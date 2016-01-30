@@ -17,7 +17,7 @@ public class Scoring : MonoBehaviour {
 	public float amountOfScanjePly1 = 100000;
 	public float amountOfScanjePly2 = 100000;
 	private float zacetniCas;
-	private Vector3 sredina = new Vector3(0.0f,-0.9f, 1.1f);
+	private Vector3 sredina = new Vector3(0.4f,-0.5f, -0.2f);
 
 	void Start(){	
 		zacetniCas = Time.time;

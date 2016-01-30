@@ -20,8 +20,8 @@ public class Effects : MonoBehaviour {
 	private int smerRotacije = 1; 
 	//Pijanost
 	private float stopnjaOpitost = 10.0f;
-	private float kvocientOpitostiPlus = 5f;
-	private float kvocientOpitostiMinus = -1f;
+	private float kvocientOpitostiPlus = 9f;
+	private float kvocientOpitostiMinus = -4f;
 	private float kvocientOpitosti = 0.0f;
 	//Camera
 	private float kotObracanja = 50.0f;

@@ -12,7 +12,6 @@ public class FillingBar : MonoBehaviour {
 	[SerializeField] Scoring scoringScript;
 
 	Image FillBar; //image that is bar
-	int CountHits = 0;
 	public int modeBar;
 	//// <summary>
 	/// Custom tipe for setting image fillnes 
@@ -35,27 +34,43 @@ public class FillingBar : MonoBehaviour {
 
     /// <summary>
     /// Sets image and value
+    /// Mode:
+    /// 1: Player1 Score
+    /// 2: Playre1 Pees Amount
+    /// 3: Player2 Score
+    /// 4: Playre2 Pees Amount
     /// </summary>
 	void Start () {
 		FillBar = gameObject.GetComponent<Image>();		
 		if(modeBar == 1){
-			ValueBar = scoringScript.player2Score;
+			ValueBar = scoringScript.player1Score;
 		}
 		if(modeBar == 2){
-			ValueBar = scoringScript.amountOfScanje;
+			ValueBar = scoringScript.amountOfScanjePly1;
+		}
+		if(modeBar == 3){
+			ValueBar = scoringScript.player2Score;
+		}
+		if(modeBar == 4){
+			ValueBar = scoringScript.amountOfScanjePly2;
 		}
 		
  	}	
 
  	void Update(){
- 		//CountHits += (int)(10 * Time.deltaTime);
-		//CountHits += 1;
+
  		if(modeBar == 1){
- 			ValueBar = scoringScript.player2Score;
- 		}
- 		if(modeBar == 2){
- 			ValueBar = scoringScript.amountOfScanje;
- 		}
+			ValueBar = scoringScript.player1Score;
+		}
+		if(modeBar == 2){
+			ValueBar = scoringScript.amountOfScanjePly1;
+		}
+		if(modeBar == 3){
+			ValueBar = scoringScript.player2Score;
+		}
+		if(modeBar == 4){
+			ValueBar = scoringScript.amountOfScanjePly2;
+		}
  		
  		//Debug.Log(ValueBar);
  	}

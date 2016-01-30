@@ -19,7 +19,7 @@ public class Scoring : MonoBehaviour {
 	/// Function that cheks if player hit the toilet and add points to his score
 	/// </summary>
 	void OnCollisionEnter(Collision collision){
-		Debug.Log(collision.collider.gameObject.layer);
+		//Debug.Log(collision.collider.gameObject.layer);
 		if(collision.collider.gameObject.layer  == LayerMask.NameToLayer("Curek1")){
 			player1Score += 1;
 			//destroy pee

@@ -10,17 +10,19 @@ using System;
 public class Scoring : MonoBehaviour {
 
 	[SerializeField] GameObject ObjectWater;
-	private float dvigKolicnik = 0.3f/200; //nastavi glede na povrsino
+	private float dvigKolicnik; //nastavi glede na povrsino
 
 	public double player1Score = 0;
 	public double player2Score = 0;
-	public double amountOfScanjePly1 = 100;
-	public double amountOfScanjePly2 = 100;
+	public float amountOfScanjePly1 = 100000;
+	public float amountOfScanjePly2 = 100000;
 	private float zacetniCas;
-	private Vector3 sredina = new Vector3(0.0f,-0.9f, 1.1f);
+	private Vector3 sredina = new Vector3(0.4f,-0.5f, -0.2f);
 
 	void Start(){	
 		zacetniCas = Time.time;
+		//dvigKolicnik = 0.3f / (amountOfScanjePly1 + amountOfScanjePly2);
+		dvigKolicnik = System.Convert.ToSingle(0.025f/(amountOfScanjePly1+amountOfScanjePly2));
 	}
 
 	/// <summary>
@@ -48,8 +50,8 @@ public class Scoring : MonoBehaviour {
 			double razdalja = Math.Round(PitagorovIzrek(sredina, collision.contacts[0].point), 1, MidpointRounding.ToEven);
 			double pretekliCas = Math.Round(System.Convert.ToDouble(zacetniCas - Time.time), 1, MidpointRounding.ToEven);
 			player2Score += 1 - 1 * razdalja - 0.01 * pretekliCas;
-			Debug.Log("Pretekli cas:" + (0.01 * pretekliCas).ToString());
-			Debug.Log("Player score:" + player2Score.ToString());
+			//Debug.Log("Pretekli cas:" + (0.01 * pretekliCas).ToString());
+			//Debug.Log("Player score:" + player2Score.ToString());
 			//destroy pee
 			Destroy(collision.collider.gameObject, 0.0f);
 		}

@@ -1,0 +1,194 @@
+fileFormatVersion: 2
+guid: 75c2933e7a63c7b41bf1b5cc5a58dee8
+timeCreated: 1454169444
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: cabinet_sink
+    100002: cabinet_tall
+    100004: ceiling
+    100006: floor
+    100008: picture
+    100010: plant_fluffy
+    100012: plant_pointy
+    100014: props
+    100016: room
+    100018: rug_sink
+    100020: rug_toilet
+    100022: toilet_bowl
+    100024: toilet_brush
+    100026: toilet_roll_01
+    100028: toilet_roll_02
+    100030: toilet_roll_03
+    100032: toilet_roll_wall
+    100034: //RootNode
+    100036: towel
+    100038: wall_corner
+    100040: wall_door
+    100042: wall_long_01
+    100044: wall_long_02
+    100046: wall_long_03
+    100048: wall_long_04
+    100050: wall_long_05
+    100052: wall_long_06
+    100054: wall_long_07
+    400000: cabinet_sink
+    400002: cabinet_tall
+    400004: ceiling
+    400006: floor
+    400008: picture
+    400010: plant_fluffy
+    400012: plant_pointy
+    400014: props
+    400016: room
+    400018: rug_sink
+    400020: rug_toilet
+    400022: toilet_bowl
+    400024: toilet_brush
+    400026: toilet_roll_01
+    400028: toilet_roll_02
+    400030: toilet_roll_03
+    400032: toilet_roll_wall
+    400034: //RootNode
+    400036: towel
+    400038: wall_corner
+    400040: wall_door
+    400042: wall_long_01
+    400044: wall_long_02
+    400046: wall_long_03
+    400048: wall_long_04
+    400050: wall_long_05
+    400052: wall_long_06
+    400054: wall_long_07
+    2300000: cabinet_sink
+    2300002: cabinet_tall
+    2300004: ceiling
+    2300006: floor
+    2300008: picture
+    2300010: plant_fluffy
+    2300012: plant_pointy
+    2300014: rug_sink
+    2300016: rug_toilet
+    2300018: toilet_bowl
+    2300020: toilet_brush
+    2300022: toilet_roll_01
+    2300024: toilet_roll_02
+    2300026: toilet_roll_03
+    2300028: toilet_roll_wall
+    2300030: towel
+    2300032: wall_corner
+    2300034: wall_door
+    2300036: wall_long_01
+    2300038: wall_long_02
+    2300040: wall_long_03
+    2300042: wall_long_04
+    2300044: wall_long_05
+    2300046: wall_long_06
+    2300048: wall_long_07
+    3300000: cabinet_sink
+    3300002: cabinet_tall
+    3300004: ceiling
+    3300006: floor
+    3300008: picture
+    3300010: plant_fluffy
+    3300012: plant_pointy
+    3300014: rug_sink
+    3300016: rug_toilet
+    3300018: toilet_bowl
+    3300020: toilet_brush
+    3300022: toilet_roll_01
+    3300024: toilet_roll_02
+    3300026: toilet_roll_03
+    3300028: toilet_roll_wall
+    3300030: towel
+    3300032: wall_corner
+    3300034: wall_door
+    3300036: wall_long_01
+    3300038: wall_long_02
+    3300040: wall_long_03
+    3300042: wall_long_04
+    3300044: wall_long_05
+    3300046: wall_long_06
+    3300048: wall_long_07
+    4300000: toilet_roll_wall
+    4300002: towel
+    4300004: plant_fluffy
+    4300006: plant_pointy
+    4300008: rug_sink
+    4300010: cabinet_sink
+    4300012: cabinet_tall
+    4300014: toilet_roll_01
+    4300016: rug_toilet
+    4300018: picture
+    4300020: toilet_brush
+    4300022: toilet_bowl
+    4300024: ceiling
+    4300026: wall_door
+    4300028: floor
+    4300030: wall_corner
+    4300032: wall_long_04
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

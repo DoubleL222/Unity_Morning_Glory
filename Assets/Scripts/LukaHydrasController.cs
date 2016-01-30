@@ -13,7 +13,6 @@ public class LukaHydrasController: MonoBehaviour
 	float 	m_sensitivity = 0.001f; // Sixense units are in mm
 	bool 	m_bInitialized;
 
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -33,12 +32,16 @@ public class LukaHydrasController: MonoBehaviour
 				if(hand.m_controller.GetButton(SixenseButtons.TRIGGER)){
 					switch (hand.m_hand) {
 					case SixenseHands.LEFT:
-						leviLulek.SpawnPiss ();
-						scoringScript.PlayerAmountDecrease(1);
+						if(scoringScript.amountOfScanjePly1 > 0){
+							leviLulek.SpawnPiss ();
+							scoringScript.PlayerAmountDecrease(1);
+						}
 						break;
 					case SixenseHands.RIGHT:
-						desniLulek.SpawnPiss ();
-						scoringScript.PlayerAmountDecrease(2);
+						if(scoringScript.amountOfScanjePly2 > 0){
+							leviLulek.SpawnPiss ();
+							scoringScript.PlayerAmountDecrease(2);
+						}
 						break;
 					default:
 						break;

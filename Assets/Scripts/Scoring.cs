@@ -9,7 +9,8 @@ using System;
 
 public class Scoring : MonoBehaviour {
 
-	[SerializeField] Lulek lulekScript;
+	[SerializeField] GameObject ObjectWater;
+	private float dvigKolicnik = 0.3f/200; //nastavi glede na povrsino
 
 	public double player1Score = 0;
 	public double player2Score = 0;
@@ -52,6 +53,11 @@ public class Scoring : MonoBehaviour {
 			//destroy pee
 			Destroy(collision.collider.gameObject, 0.0f);
 		}
+		//Dvig vode kadar ga zadane curek scanja
+		if(player1Score + player2Score < 200){
+			ObjectWater.transform.position = new Vector3(ObjectWater.transform.position.x, ObjectWater.transform.position.y  + dvigKolicnik, ObjectWater.transform.position.z);	
+		}
+		
 	}
 
 	public void PlayerAmountDecrease(int player){

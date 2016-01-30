@@ -28,7 +28,8 @@ public class FillingBar : MonoBehaviour {
 		set 
 		{
 			if (FillBar != null) {
-					FillBar.fillAmount = value / 100f;
+				
+				FillBar.fillAmount = Mathf.Clamp (value, 0f, 100f);
 			}
 		} 
     }

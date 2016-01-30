@@ -12,7 +12,8 @@ using UnityStandardAssets.ImageEffects;
 public class Effects : MonoBehaviour {
 
 	[SerializeField] GameObject LightSource;
-	[SerializeField] BlurOptimized blurOptimized;
+	[SerializeField] BlurOptimized blurOptimized1;
+	[SerializeField] BlurOptimized blurOptimized2;
 	[SerializeField] GameObject cameraPosition;
 	//Luc
 	private int zacKotRotacije = 45;
@@ -44,15 +45,17 @@ public class Effects : MonoBehaviour {
 		switch (LevelMode) {
 			case 1:
 			  LightSource.SetActive(true);
-			  blurOptimized.enabled = false;
+			  blurOptimized1.enabled = false;
+			  blurOptimized2.enabled = false;
 			  break;
 			case 2:
-			  LightSource.SetActive(false);
-				blurOptimized.enabled = false;
+				blurOptimized1.enabled = false;
+				blurOptimized2.enabled = false;
 			  break;
 			case 0:
 			  LightSource.SetActive(false);
-			  blurOptimized.enabled = false;
+				blurOptimized1.enabled = false;
+				blurOptimized2.enabled = false;
 			  break;
 		}
 		//StartCoroutine(Pijanost(9.0f));
@@ -77,13 +80,20 @@ public class Effects : MonoBehaviour {
 			  break;
 			case 2:
 				//Bluring effect
-				blurOptimized.blurSize += kvocientOpitosti * Time.fixedDeltaTime;
-				if (blurOptimized.blurSize >= stopnjaOpitost){
+				blurOptimized1.blurSize += kvocientOpitosti * Time.fixedDeltaTime;
+				if (blurOptimized1.blurSize >= stopnjaOpitost){
 					kvocientOpitosti = kvocientOpitostiMinus;
 				}
-				if(blurOptimized.blurSize < 0){
+				if(blurOptimized1.blurSize < 0){
 					kvocientOpitosti = kvocientOpitostiPlus;
-				}	  
+				}	
+				blurOptimized2.blurSize += kvocientOpitosti * Time.fixedDeltaTime;
+				if (blurOptimized2.blurSize >= stopnjaOpitost){
+					kvocientOpitosti = kvocientOpitostiMinus;
+				}
+				if(blurOptimized2.blurSize < 0){
+					kvocientOpitosti = kvocientOpitostiPlus;
+				}	
 			  break;
 			case 0:
 				//if(cameraEffect == 1){

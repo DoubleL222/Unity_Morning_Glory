@@ -21,7 +21,7 @@ public class Scoring : MonoBehaviour {
 
 	void Start(){	
 		zacetniCas = Time.time;
-		dvigKolicnik = 0.3f / (amountOfScanjePly1 + amountOfScanjePly2);
+		//dvigKolicnik = 0.3f / (amountOfScanjePly1 + amountOfScanjePly2);
 		dvigKolicnik = System.Convert.ToSingle(0.025f/(amountOfScanjePly1+amountOfScanjePly2));
 	}
 

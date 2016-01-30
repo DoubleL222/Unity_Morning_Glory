@@ -16,8 +16,8 @@ public class HalfCameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = Vector3.SmoothDamp (transform.position, FollowPenis.position, ref refSPeed, smoothMove);
-		transform.rotation = Quaternion.Slerp (transform.rotation, FollowPenis.rotation, smoothRot);
+	//	transform.position = Vector3.SmoothDamp (transform.position, FollowPenis.position+cameraOffset, ref refSPeed, smoothMove);
+	//	transform.rotation = Quaternion.Slerp (transform.rotation, FollowPenis.rotation, smoothRot);
 	//	transform.position = FollowPenis.position+cameraOffset;
 	//	transform.rotation = FollowPenis.rotation;
 	}

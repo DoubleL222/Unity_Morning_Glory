@@ -19,7 +19,32 @@ public class LukaHydrasController: MonoBehaviour
 		m_hands = GetComponentsInChildren<SixenseHand>();
 	}
 
-
+	void FixedUpdate(){
+		
+		foreach (SixenseHand hand in m_hands) {
+			if (IsControllerActive (hand.m_controller)) {
+				if (hand.m_controller.Trigger > 0) {
+					switch (hand.m_hand) {
+					case SixenseHands.LEFT:
+						if (scoringScript.amountOfScanjePly1 > 0) {
+							leviLulek.SpawnPiss (hand.gameObject.transform.rotation, hand.m_controller.Trigger);
+							scoringScript.PlayerAmountDecrease (1);
+						}
+						break;
+					case SixenseHands.RIGHT:
+						if (scoringScript.amountOfScanjePly2 > 0) {
+							desniLulek.SpawnPiss (hand.gameObject.transform.rotation, hand.m_controller.Trigger);
+							//leviLulek.SpawnPiss ();
+							scoringScript.PlayerAmountDecrease (2);
+						}
+						break;
+					default:
+						break;
+					}
+				}
+			}
+		}
+	}
 	// Update is called once per frame
 	void Update () 
 	{
@@ -29,25 +54,25 @@ public class LukaHydrasController: MonoBehaviour
 		{
 			if ( IsControllerActive( hand.m_controller ) )
 			{
-				if(hand.m_controller.Trigger > 0){
+				/*if(hand.m_controller.Trigger > 0){
 					switch (hand.m_hand) {
 					case SixenseHands.LEFT:
 						if(scoringScript.amountOfScanjePly1 > 0){
-							leviLulek.SpawnPiss (hand.gameObject.transform.rotation, hand.m_controller.Trigger);
-							scoringScript.PlayerAmountDecrease(1);
+							//leviLulek.SpawnPiss (hand.gameObject.transform.rotation, hand.m_controller.Trigger);
+							//scoringScript.PlayerAmountDecrease(1);
 						}
 						break;
 					case SixenseHands.RIGHT:
 						if(scoringScript.amountOfScanjePly2 > 0){
-							desniLulek.SpawnPiss (hand.gameObject.transform.rotation, hand.m_controller.Trigger);
+							//desniLulek.SpawnPiss (hand.gameObject.transform.rotation, hand.m_controller.Trigger);
 							//leviLulek.SpawnPiss ();
-							scoringScript.PlayerAmountDecrease(2);
+							//scoringScript.PlayerAmountDecrease(2);
 						}
 						break;
 					default:
 						break;
 					}
-				}
+				}*/
 
 				if(hand.m_controller.GetButtonDown( SixenseButtons.START )){
 					bResetHandPosition = true;

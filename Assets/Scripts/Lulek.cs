@@ -8,7 +8,7 @@ public class Lulek : MonoBehaviour
 
     public smer smerCurka = smer.Naprej;
     public GameObject curek;
-	private float moc = 500f;
+	private float moc = 150f;
 
 	//void Start ()
     //{
@@ -18,7 +18,7 @@ public class Lulek : MonoBehaviour
 
 	void Update ()
     {
-        SpawnPiss();
+     //   SpawnPiss();
 	}
 
 	public void SpawnPiss(Quaternion pissRot, float PissForce){

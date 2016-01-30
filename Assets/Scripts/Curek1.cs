@@ -23,15 +23,15 @@ public class Curek1 : MonoBehaviour
 
     void OnCollisionEnter(Collision c)
     {
-		if (c.gameObject.tag != "CurekLevi" && c.gameObject.tag != "CurekDesni")//če ni isti curek
+		if (c.gameObject.tag != gameObject.tag)//če ni isti curek
         {
-            if (kapljica != null)
+			if (kapljica != null && c.gameObject.tag != "Water")
             {
                 for (int i = 0; i < 3; i++)
                 {
                     Vector3 v = gameObject.transform.position + offsetKapljic;
                     GameObject g1 = (GameObject)Instantiate(kapljica, v, Quaternion.identity);
-                    addRandomForce(g1.GetComponent<Rigidbody>());
+					addRandomForce(g1.GetComponent<Rigidbody>(), g1.transform);
                 }
             }
 
@@ -39,8 +39,9 @@ public class Curek1 : MonoBehaviour
         }
     }
     
-    void addRandomForce(Rigidbody rb)
+	void addRandomForce(Rigidbody rb, Transform kTransform)
     {
+		
         Vector3 random = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 2f), Random.Range(-1f, 1f));
         //rb.AddForce(random * 30);
         rb.velocity = random;

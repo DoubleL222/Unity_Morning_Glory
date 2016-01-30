@@ -10,17 +10,18 @@ using System;
 public class Scoring : MonoBehaviour {
 
 	[SerializeField] GameObject ObjectWater;
-	private float dvigKolicnik = 0.3f/200; //nastavi glede na povrsino
+	private float dvigKolicnik; //nastavi glede na povrsino
 
 	public double player1Score = 0;
 	public double player2Score = 0;
-	public double amountOfScanjePly1 = 100;
-	public double amountOfScanjePly2 = 100;
+	public float amountOfScanjePly1 = 100000;
+	public float amountOfScanjePly2 = 100000;
 	private float zacetniCas;
 	private Vector3 sredina = new Vector3(0.0f,-0.9f, 1.1f);
 
 	void Start(){	
 		zacetniCas = Time.time;
+		dvigKolicnik = 0.3f / (amountOfScanjePly1 + amountOfScanjePly2);
 	}
 
 	/// <summary>

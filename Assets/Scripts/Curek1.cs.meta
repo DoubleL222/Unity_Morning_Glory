@@ -1,10 +1,11 @@
 fileFormatVersion: 2
 guid: 809d81273aae6b145b20043f9b9b0e97
-timeCreated: 1454096296
+timeCreated: 1454168146
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - kapljica: {fileID: 162444, guid: c71a1166395d6a14b9adf5b0b033fcc4, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -48,7 +48,7 @@ public class FillingBar : MonoBehaviour {
 
  	void Update(){
  		//CountHits += (int)(10 * Time.deltaTime);
-		CountHits = 1;
+		CountHits += 1;
  		if(modeBar == 1){
  			ValueBar += CountHits;
  		}

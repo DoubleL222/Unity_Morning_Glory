@@ -35,14 +35,19 @@ public class Scoring : MonoBehaviour {
 			//ta vrne double in potem ga roundam na eno decimalko
 			//round isto vrne double
 			double razdalja = Math.Round(PitagorovIzrek(sredina, collision.contacts[0].point), 1, MidpointRounding.ToEven);
-			player1Score += 1 - 1 * razdalja;
+			//zracuna pretekli cas in ga pretvori v double ter rounda
+			double pretekliCas = Math.Round(System.Convert.ToDouble(zacetniCas - Time.time), 1, MidpointRounding.ToEven);
+
+			player1Score += 1 - 1 * razdalja - 0.01 * pretekliCas;
 			Debug.Log(player1Score);
 			//destroy pee
 			Destroy(collision.collider.gameObject, 0.0f);
 		}
 		if(collision.collider.gameObject.layer  == LayerMask.NameToLayer("Curek2")){
 			double razdalja = Math.Round(PitagorovIzrek(sredina, collision.contacts[0].point), 1, MidpointRounding.ToEven);
-			player2Score += 1 - 1 * razdalja;
+			double pretekliCas = Math.Round(System.Convert.ToDouble(zacetniCas - Time.time), 1, MidpointRounding.ToEven);
+			player2Score += 1 - 1 * razdalja - 0.01 * pretekliCas;
+			Debug.Log("Pretekli cas:" + (0.01 * pretekliCas).ToString());
 			Debug.Log("Player score:" + player2Score.ToString());
 			//destroy pee
 			Destroy(collision.collider.gameObject, 0.0f);

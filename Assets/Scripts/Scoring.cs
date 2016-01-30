@@ -10,7 +10,7 @@ using System;
 public class Scoring : MonoBehaviour {
 
 	[SerializeField] GameObject ObjectWater;
-	private float dvigKolicnik = 0.3f/200; //nastavi glede na povrsino
+	private float dvigKolicnik = 0.035f/200; //nastavi glede na povrsino
 
 	public double player1Score = 0;
 	public double player2Score = 0;

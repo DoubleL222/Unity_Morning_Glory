@@ -1,0 +1,57 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class Curek1 : MonoBehaviour
+{
+	
+    public GameObject kapljica;
+	private Vector3 rotatePiss = new Vector3(90.0f, 0, 0);
+
+	private Rigidbody rbd;
+
+	void Start(){
+		rbd = GetComponent<Rigidbody> ();
+		transform.forward = rbd.velocity;
+		transform.Rotate (rotatePiss);
+
+	}
+	void FixedUpdate(){
+		transform.forward = rbd.velocity;
+		transform.Rotate (rotatePiss);
+	}
+
+    void OnCollisionEnter(Collision c)
+    {
+<<<<<<< HEAD
+        //Debug.Log(c.contacts[0].point);
+        //Debug.Log(c.contacts.Length);
+		if (c.gameObject.tag != "CurekLevi" && c.gameObject.tag != "CurekDesni")//če ni isti curek
+=======
+        if (c.gameObject.tag != gameObject.tag)//če ni isti curek
+>>>>>>> 430b6ed70b6988aa43ad8e14dda29f536cd93935
+        {
+           /* if (kapljica != null)
+            {
+<<<<<<< HEAD
+                for (int i = 0; i < 2; i++)
+                {
+                    GameObject temp = (GameObject)Instantiate(kapljica, gameObject.transform.position, Quaternion.identity);
+                    addRandomForce(temp.GetComponent<Rigidbody>());
+                }
+            }*/
+=======
+                    Instantiate(kapljica, gameObject.transform.position, Quaternion.identity);
+            }
+>>>>>>> 430b6ed70b6988aa43ad8e14dda29f536cd93935
+
+            Destroy(gameObject);
+        }
+    }
+
+    ////Katastrofa
+    //void addRandomForce(Rigidbody rb)
+    //{
+    //    Vector3 random = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1));
+    //    rb.AddForce(random * 30);    
+    //}
+}

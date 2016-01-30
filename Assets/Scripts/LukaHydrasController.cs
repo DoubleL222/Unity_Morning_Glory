@@ -29,17 +29,18 @@ public class LukaHydrasController: MonoBehaviour
 		{
 			if ( IsControllerActive( hand.m_controller ) )
 			{
-				if(hand.m_controller.GetButton(SixenseButtons.TRIGGER)){
+				if(hand.m_controller.Trigger > 0){
 					switch (hand.m_hand) {
 					case SixenseHands.LEFT:
 						if(scoringScript.amountOfScanjePly1 > 0){
-							leviLulek.SpawnPiss ();
+							leviLulek.SpawnPiss (hand.gameObject.transform.rotation, hand.m_controller.Trigger);
 							scoringScript.PlayerAmountDecrease(1);
 						}
 						break;
 					case SixenseHands.RIGHT:
 						if(scoringScript.amountOfScanjePly2 > 0){
-							leviLulek.SpawnPiss ();
+							desniLulek.SpawnPiss (hand.gameObject.transform.rotation, hand.m_controller.Trigger);
+							//leviLulek.SpawnPiss ();
 							scoringScript.PlayerAmountDecrease(2);
 						}
 						break;

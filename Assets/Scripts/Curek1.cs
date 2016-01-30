@@ -3,12 +3,27 @@ using System.Collections;
 
 public class Curek1 : MonoBehaviour
 {
+	
     public GameObject kapljica;
     public Vector3 offsetKapljic;
+	private Vector3 rotatePiss = new Vector3(90.0f, 0, 0);
+
+	private Rigidbody rbd;
+
+	void Start(){
+		rbd = GetComponent<Rigidbody> ();
+		transform.forward = rbd.velocity;
+		transform.Rotate (rotatePiss);
+
+	}
+	void FixedUpdate(){
+		transform.forward = rbd.velocity;
+		transform.Rotate (rotatePiss);
+	}
 
     void OnCollisionEnter(Collision c)
     {
-        if (c.gameObject.tag != gameObject.tag)//če ni isti curek
+		if (c.gameObject.tag != "CurekLevi" && c.gameObject.tag != "CurekDesni")//če ni isti curek
         {
             if (kapljica != null)
             {

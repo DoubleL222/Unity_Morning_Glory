@@ -55,24 +55,29 @@ public class FillingBar : MonoBehaviour {
 		if(modeBar == 4){
 			ValueBar = Convert.ToInt32(scoringScript.amountOfScanjePly2);
 		}
+
 		
  	}	
 
  	void Update(){
 
  		if(modeBar == 1){
+ 			//Debug.Log("debuf1: " + Convert.ToInt32(scoringScript.player1Score).ToString());
 			ValueBar = Convert.ToInt32(scoringScript.player1Score);
 		}
 		if(modeBar == 2){
+			//Debug.Log("debuf2: " + Convert.ToInt32(scoringScript.amountOfScanjePly1).ToString());
 			ValueBar = Convert.ToInt32(scoringScript.amountOfScanjePly1);
 		}
 		if(modeBar == 3){
+			//Debug.Log("debuf3: " + Convert.ToInt32(scoringScript.player1Score).ToString());
 			ValueBar = Convert.ToInt32(scoringScript.player2Score);
 		}
 		if(modeBar == 4){
+			//Debug.Log("debuf4: " + Convert.ToInt32(scoringScript.amountOfScanjePly2).ToString());
 			ValueBar = Convert.ToInt32(scoringScript.amountOfScanjePly2);
 		}
- 		
+ 		//Debug.Log("valuebar: " + ValueBar.ToString());
  		//Debug.Log(ValueBar);
  	}
 

@@ -29,7 +29,7 @@ public class FillingBar : MonoBehaviour {
 		{
 			if (FillBar != null) {
 				
-				FillBar.fillAmount = value / scoringScript.amountOfScanjePly1;
+				FillBar.fillAmount = value / System.Convert.ToSingle(scoringScript.amountOfScanjePly1);
 			}
 		} 
     }
@@ -48,13 +48,13 @@ public class FillingBar : MonoBehaviour {
 			ValueBar = Convert.ToInt32(scoringScript.player1Score);
 		}
 		if(modeBar == 2){
-			ValueBar = Convert.ToInt32(scoringScript.amountOfScanjePly1);
+			ValueBar = scoringScript.amountOfScanjePly1;
 		}
 		if(modeBar == 3){
 			ValueBar = Convert.ToInt32(scoringScript.player2Score);
 		}
 		if(modeBar == 4){
-			ValueBar = Convert.ToInt32(scoringScript.amountOfScanjePly2);
+			ValueBar = scoringScript.amountOfScanjePly2;
 		}
 
 		
@@ -63,20 +63,24 @@ public class FillingBar : MonoBehaviour {
  	void Update(){
 
  		if(modeBar == 1){
- 			Debug.Log("debuf1: " + Convert.ToInt32(scoringScript.player1Score).ToString());
+ 			//Debug.Log("debuf1: " + Convert.ToInt32(scoringScript.player1Score).ToString());
 			ValueBar = Convert.ToInt32(scoringScript.player1Score);
+			Debug.Log("1: "+ValueBar.ToString());
 		}
 		if(modeBar == 2){
 			//Debug.Log("debuf2: " + Convert.ToInt32(scoringScript.amountOfScanjePly1).ToString());
-			ValueBar = Convert.ToInt32(scoringScript.amountOfScanjePly1);
+			ValueBar = scoringScript.amountOfScanjePly1;
+			Debug.Log("2: "+ValueBar.ToString());
 		}
 		if(modeBar == 3){
 			//Debug.Log("debuf3: " + Convert.ToInt32(scoringScript.player1Score).ToString());
 			ValueBar = Convert.ToInt32(scoringScript.player2Score);
+			Debug.Log("3: "+ValueBar.ToString());
 		}
 		if(modeBar == 4){
 			//Debug.Log("debuf4: " + Convert.ToInt32(scoringScript.amountOfScanjePly2).ToString());
-			ValueBar = Convert.ToInt32(scoringScript.amountOfScanjePly2);
+			ValueBar = scoringScript.amountOfScanjePly2;
+			Debug.Log("4: "+ValueBar.ToString());
 		}
  		//Debug.Log("valuebar: " + ValueBar.ToString());
  		//Debug.Log(ValueBar);

@@ -12,8 +12,8 @@ public class Curek1 : MonoBehaviour
 
 	void Start(){
 		rbd = GetComponent<Rigidbody> ();
-		transform.forward = rbd.velocity;
-		transform.Rotate (rotatePiss);
+		//transform.forward = rbd.velocity;
+		//transform.Rotate (rotatePiss);
 
 	}
 	void FixedUpdate(){
@@ -27,7 +27,7 @@ public class Curek1 : MonoBehaviour
         {
 			if (kapljica != null && c.gameObject.tag != "Water")
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 1; i++)
                 {
                     Vector3 v = gameObject.transform.position + offsetKapljic;
                     GameObject g1 = (GameObject)Instantiate(kapljica, v, Quaternion.identity);

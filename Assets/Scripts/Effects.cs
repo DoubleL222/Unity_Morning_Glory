@@ -27,6 +27,7 @@ public class Effects : MonoBehaviour {
 	private float kotObracanja = 50.0f;
 	private float trKotObr = 0;
 	private int smerObracanja = 2;
+	private float dvigCamere = 10.0f;
 
 	private Vector3 startPosition;
 	//private float odaljenKoeficient = 10.0f;
@@ -85,11 +86,16 @@ public class Effects : MonoBehaviour {
 				}	  
 			  break;
 			case 0:
-				cameraPosition.transform.Rotate(0, smerObracanja,0, Space.Self);
-				trKotObr += smerObracanja;
-				if(Math.Abs(trKotObr) >= Math.Abs(kotObracanja)){
-					smerObracanja *= -1;
-				}
+				//if(cameraEffect == 1){
+					//levo desno
+					cameraPosition.transform.Rotate(0, smerObracanja,0, Space.Self);
+					trKotObr += smerObracanja;
+					if(Math.Abs(trKotObr) >= Math.Abs(kotObracanja)){
+						smerObracanja *= -1;
+					}
+				//}else{
+				//	if()
+				//}
 			  break;
 			}
 	}

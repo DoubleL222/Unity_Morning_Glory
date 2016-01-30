@@ -15,6 +15,8 @@ public class Effects : MonoBehaviour {
 	[SerializeField] BlurOptimized blurOptimized1;
 	[SerializeField] BlurOptimized blurOptimized2;
 	[SerializeField] GameObject cameraPosition;
+	[SerializeField] Renderer barvaVode;
+	[SerializeField] Scoring scoringScript;
 	//Luc
 	private int zacKotRotacije = 45;
 	private int trKotRotacije = 0;
@@ -39,6 +41,8 @@ public class Effects : MonoBehaviour {
 	/// setting in which mode player is
 	/// </summary>
 	void Start(){
+
+		barvaVode.material.SetColor("_RefrColor", Color.red);
 
 		kvocientOpitosti = kvocientOpitostiPlus;
 
@@ -70,6 +74,9 @@ public class Effects : MonoBehaviour {
 	/// </summary>
 
 	void Update(){
+
+		barvaVode.material.SetColor("_RefrColor", Color.Lerp(Color.white, Color.yellow, (float) (scoringScript.player2Score + scoringScript.player1Score) / (float)scoringScript.amountOfScanjeSplosni));
+
 		switch (LevelMode) {
 			case 1:
 				LightSource.transform.Rotate(0,1 * smerRotacije,0, Space.Self);

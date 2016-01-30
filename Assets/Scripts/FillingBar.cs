@@ -9,6 +9,8 @@ using UnityEngine.UI;
 
 public class FillingBar : MonoBehaviour {
 	
+	[SerializeField] Scoring scoringScript;
+
 	Image FillBar; //image that is bar
 	int CountHits = 0;
 	public int modeBar;
@@ -37,23 +39,22 @@ public class FillingBar : MonoBehaviour {
 	void Start () {
 		FillBar = gameObject.GetComponent<Image>();		
 		if(modeBar == 1){
-			Debug.Log ("settin fill bar to 0");
-			ValueBar = 0;
+			ValueBar = scoringScript.player2Score;
 		}
 		if(modeBar == 2){
-			ValueBar = 100;
+			ValueBar = scoringScript.amountOfScanje;
 		}
 		
  	}	
 
  	void Update(){
  		//CountHits += (int)(10 * Time.deltaTime);
-		CountHits += 1;
+		//CountHits += 1;
  		if(modeBar == 1){
- 			ValueBar += CountHits;
+ 			ValueBar = scoringScript.player2Score;
  		}
  		if(modeBar == 2){
- 			ValueBar -= CountHits;
+ 			ValueBar = scoringScript.amountOfScanje;
  		}
  		
  		//Debug.Log(ValueBar);

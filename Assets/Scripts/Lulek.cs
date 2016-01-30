@@ -19,7 +19,7 @@ public class Lulek : MonoBehaviour
 
 	void Update ()
     {
-	    
+        
 	}
 
 	public void SpawnPiss(){

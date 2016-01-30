@@ -25,8 +25,12 @@ public class Lulek : MonoBehaviour
 	public void SpawnPiss(){
 		if (curek != null)
 		{
-			GameObject temp = (GameObject)Instantiate(curek, gameObject.transform.position, Quaternion.identity);
+			GameObject temp = (GameObject)Instantiate(curek, gameObject.transform.position, Quaternion.Euler(new Vector3(90.0f, 0f, 0f)));
 			addForce(temp.GetComponent<Rigidbody>());
+			/*temp = (GameObject)Instantiate(curek, gameObject.transform.position, Quaternion.identity);
+			addForce(temp.GetComponent<Rigidbody>());
+			temp = (GameObject)Instantiate(curek, gameObject.transform.position, Quaternion.identity);
+			addForce(temp.GetComponent<Rigidbody>());*/
 		}
 	}
 

@@ -17,7 +17,7 @@ public class Scoring : MonoBehaviour {
 	void Update(){
 		//spawnam piss in odstejem kolicino 
 		if(amountOfScanje > 0){
-			lulekScript.SpawnPiss();
+			//lulekScript.SpawnPiss();
 			amountOfScanje--;
 		}
 	}

@@ -22,12 +22,27 @@ public class Curek1 : MonoBehaviour
 
     void OnCollisionEnter(Collision c)
     {
+<<<<<<< HEAD
+        //Debug.Log(c.contacts[0].point);
+        //Debug.Log(c.contacts.Length);
 		if (c.gameObject.tag != "CurekLevi" && c.gameObject.tag != "CurekDesni")//če ni isti curek
+=======
+        if (c.gameObject.tag != gameObject.tag)//če ni isti curek
+>>>>>>> 430b6ed70b6988aa43ad8e14dda29f536cd93935
         {
-            if (kapljica != null)
+           /* if (kapljica != null)
             {
+<<<<<<< HEAD
+                for (int i = 0; i < 2; i++)
+                {
+                    GameObject temp = (GameObject)Instantiate(kapljica, gameObject.transform.position, Quaternion.identity);
+                    addRandomForce(temp.GetComponent<Rigidbody>());
+                }
+            }*/
+=======
                     Instantiate(kapljica, gameObject.transform.position, Quaternion.identity);
             }
+>>>>>>> 430b6ed70b6988aa43ad8e14dda29f536cd93935
 
             Destroy(gameObject);
         }

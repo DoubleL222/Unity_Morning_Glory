@@ -49,8 +49,9 @@ public class Effects : MonoBehaviour {
 			  blurOptimized2.enabled = false;
 			  break;
 			case 2:
-				blurOptimized1.enabled = false;
-				blurOptimized2.enabled = false;
+				LightSource.SetActive(false);
+				blurOptimized1.enabled = true;
+				blurOptimized2.enabled = true;
 			  break;
 			case 0:
 			  LightSource.SetActive(false);
@@ -98,11 +99,11 @@ public class Effects : MonoBehaviour {
 			case 0:
 				//if(cameraEffect == 1){
 					//levo desno
-					cameraPosition.transform.Rotate(0, smerObracanja,0, Space.Self);
-					trKotObr += smerObracanja;
-					if(Math.Abs(trKotObr) >= Math.Abs(kotObracanja)){
-						smerObracanja *= -1;
-					}
+					//cameraPosition.transform.Rotate(0, smerObracanja,0, Space.Self);
+					//trKotObr += smerObracanja;
+					//if(Math.Abs(trKotObr) >= Math.Abs(kotObracanja)){
+					//	smerObracanja *= -1;
+					//}
 				//}else{
 				//	if()
 				//}

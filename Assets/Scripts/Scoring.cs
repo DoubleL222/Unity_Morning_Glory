@@ -14,15 +14,16 @@ public class Scoring : MonoBehaviour {
 
 	public double player1Score = 0;
 	public double player2Score = 0;
-	public int amountOfScanjePly1 = 100;
-	public int amountOfScanjePly2 = 100;
+	public int amountOfScanjePly1 = 1000;
+	public int amountOfScanjePly2 = 1000;
+	public int amountOfScanjeSplosni = 1000;//prilagaja obema amountama
 	private float zacetniCas;
 	private Vector3 sredina = new Vector3(0.4f,-0.5f, -0.2f);
 
 	void Start(){	
 		zacetniCas = Time.time;
 		//dvigKolicnik = 0.3f / (amountOfScanjePly1 + amountOfScanjePly2);
-		dvigKolicnik = System.Convert.ToSingle(0.1f/(amountOfScanjePly1+amountOfScanjePly2));
+		dvigKolicnik = System.Convert.ToSingle(0.05f/(float)(2 * amountOfScanjeSplosni));
 	}
 
 	/// <summary>
@@ -38,7 +39,6 @@ public class Scoring : MonoBehaviour {
 			//ta vrne double in potem ga roundam na eno decimalko
 			//round isto vrne double
 			double razdalja = Math.Round(PitagorovIzrek(sredina, collision.contacts[0].point), 1, MidpointRounding.ToEven);
-			Debug.Log(razdalja);
 			//zracuna pretekli cas in ga pretvori v double ter rounda
 			double pretekliCas = Math.Round(System.Convert.ToDouble(zacetniCas - Time.time), 1, MidpointRounding.ToEven);
 
@@ -49,7 +49,6 @@ public class Scoring : MonoBehaviour {
 		}
 		if(collision.collider.gameObject.layer  == LayerMask.NameToLayer("Curek2")){
 			double razdalja = Math.Round(PitagorovIzrek(sredina, collision.contacts[0].point), 1, MidpointRounding.ToEven);
-			Debug.Log(razdalja);
 			double pretekliCas = Math.Round(System.Convert.ToDouble(zacetniCas - Time.time), 1, MidpointRounding.ToEven);
 			player2Score += 1 - 1 * razdalja - 0.01 * pretekliCas;
 			//Debug.Log("Pretekli cas:" + (0.01 * pretekliCas).ToString());
@@ -58,7 +57,7 @@ public class Scoring : MonoBehaviour {
 			Destroy(collision.collider.gameObject, 0.0f);
 		}
 		//Dvig vode kadar ga zadane curek scanja
-		if(player1Score + player2Score < amountOfScanjePly1 + amountOfScanjePly2){
+		if(player1Score + player2Score < 2 * amountOfScanjeSplosni){
 			ObjectWater.transform.position = new Vector3(ObjectWater.transform.position.x, ObjectWater.transform.position.y  + dvigKolicnik, ObjectWater.transform.position.z);	
 		}
 		

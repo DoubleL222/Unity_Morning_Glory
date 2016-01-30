@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Lulek : MonoBehaviour
 {
-    //public enum smer
-    //{ Naprej, Levo, Desno, Nazaj }
+    public enum smer
+    { Naprej, Levo, Desno, Nazaj }
 
     public smer smerCurka = smer.Naprej;
     public GameObject curek;

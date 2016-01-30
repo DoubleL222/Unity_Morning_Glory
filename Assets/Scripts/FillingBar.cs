@@ -6,6 +6,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class FillingBar : MonoBehaviour {
 	
@@ -43,16 +44,16 @@ public class FillingBar : MonoBehaviour {
 	void Start () {
 		FillBar = gameObject.GetComponent<Image>();		
 		if(modeBar == 1){
-			ValueBar = scoringScript.player1Score;
+			ValueBar = Convert.ToInt32(scoringScript.player1Score);
 		}
 		if(modeBar == 2){
-			ValueBar = scoringScript.amountOfScanjePly1;
+			ValueBar = Convert.ToInt32(scoringScript.amountOfScanjePly1);
 		}
 		if(modeBar == 3){
-			ValueBar = scoringScript.player2Score;
+			ValueBar = Convert.ToInt32(scoringScript.player2Score);
 		}
 		if(modeBar == 4){
-			ValueBar = scoringScript.amountOfScanjePly2;
+			ValueBar = Convert.ToInt32(scoringScript.amountOfScanjePly2);
 		}
 		
  	}	
@@ -60,16 +61,16 @@ public class FillingBar : MonoBehaviour {
  	void Update(){
 
  		if(modeBar == 1){
-			ValueBar = scoringScript.player1Score;
+			ValueBar = Convert.ToInt32(scoringScript.player1Score);
 		}
 		if(modeBar == 2){
-			ValueBar = scoringScript.amountOfScanjePly1;
+			ValueBar = Convert.ToInt32(scoringScript.amountOfScanjePly1);
 		}
 		if(modeBar == 3){
-			ValueBar = scoringScript.player2Score;
+			ValueBar = Convert.ToInt32(scoringScript.player2Score);
 		}
 		if(modeBar == 4){
-			ValueBar = scoringScript.amountOfScanjePly2;
+			ValueBar = Convert.ToInt32(scoringScript.amountOfScanjePly2);
 		}
  		
  		//Debug.Log(ValueBar);

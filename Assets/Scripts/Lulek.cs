@@ -19,7 +19,7 @@ public class Lulek : MonoBehaviour
 
 	void Update ()
     {
-        
+        //SpawnPiss();
 	}
 
 	public void SpawnPiss(Quaternion pissRot, float PissForce){
@@ -53,7 +53,5 @@ public class Lulek : MonoBehaviour
                 rb.AddForce(-transform.right * moc);
                 break;
         }
-         
-    
     }
 }

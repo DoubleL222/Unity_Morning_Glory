@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour {
 	void Update () {
 
 		if(Input.GetKey(KeyCode.Space)){
-			lulekScript.SpawnPiss();
+			lulekScript.SpawnPiss(Quaternion.identity, 0.5f);
 		}
 		if(Input.GetKeyDown(KeyCode.UpArrow)){
 			//Debug.Log(lulekPosition.transform.position);

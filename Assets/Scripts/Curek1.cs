@@ -13,7 +13,7 @@ public class Curek1 : MonoBehaviour
 		rbd = GetComponent<Rigidbody> ();
 		transform.forward = rbd.velocity;
 		transform.Rotate (rotatePiss);
-		transform.Rotate (new Vector3(90.0f, 0, 0));
+
 	}
 	void FixedUpdate(){
 		transform.forward = rbd.velocity;

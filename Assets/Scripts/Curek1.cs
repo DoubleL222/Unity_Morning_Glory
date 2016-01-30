@@ -5,6 +5,7 @@ public class Curek1 : MonoBehaviour
 {
 	
     public GameObject kapljica;
+    public Vector3 offsetKapljic;
 	private Vector3 rotatePiss = new Vector3(90.0f, 0, 0);
 
 	private Rigidbody rbd;
@@ -26,17 +27,22 @@ public class Curek1 : MonoBehaviour
         {
             if (kapljica != null)
             {
-                    Instantiate(kapljica, gameObject.transform.position, Quaternion.identity);
+                for (int i = 0; i < 3; i++)
+                {
+                    Vector3 v = gameObject.transform.position + offsetKapljic;
+                    GameObject g1 = (GameObject)Instantiate(kapljica, v, Quaternion.identity);
+                    addRandomForce(g1.GetComponent<Rigidbody>());
+                }
             }
 
             Destroy(gameObject);
         }
     }
-
-    ////Katastrofa
-    //void addRandomForce(Rigidbody rb)
-    //{
-    //    Vector3 random = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1));
-    //    rb.AddForce(random * 30);    
-    //}
+    
+    void addRandomForce(Rigidbody rb)
+    {
+        Vector3 random = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 2f), Random.Range(-1f, 1f));
+        //rb.AddForce(random * 30);
+        rb.velocity = random;
+    }
 }

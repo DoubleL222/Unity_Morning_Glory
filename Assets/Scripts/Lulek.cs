@@ -18,7 +18,7 @@ public class Lulek : MonoBehaviour
 
 	void Update ()
     {
-        //SpawnPiss();
+        SpawnPiss();
 	}
 
 	public void SpawnPiss(Quaternion pissRot, float PissForce){

@@ -8,8 +8,7 @@ public class Lulek : MonoBehaviour
 
     public smer smerCurka = smer.Naprej;
     public GameObject curek;
-    [Range(0,300)]
-    public float moc = 200f;
+	private float moc = 500f;
 
 	//void Start ()
     //{
@@ -27,7 +26,10 @@ public class Lulek : MonoBehaviour
 		{
 			
 			GameObject temp = (GameObject)Instantiate(curek, gameObject.transform.position, pissRot*Quaternion.Euler(new Vector3(90.0f, 0f, 0f)));
-			temp.GetComponent<Rigidbody>().AddForce(transform.forward * PissForce * moc);
+			Rigidbody CurekRBD = temp.GetComponent<Rigidbody> ();
+			CurekRBD.AddForce(transform.forward * PissForce * moc);
+			temp.transform.forward = CurekRBD.velocity;
+			temp.transform.Rotate (new Vector3(90.0f, 0, 0));
 			//addForce(temp.GetComponent<Rigidbody>());
 			/*temp = (GameObject)Instantiate(curek, gameObject.transform.position, Quaternion.identity);
 			addForce(temp.GetComponent<Rigidbody>());

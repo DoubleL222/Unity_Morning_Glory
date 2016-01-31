@@ -3,17 +3,19 @@ using System.Collections;
 
 public class Credits : MonoBehaviour
 {
-    Vector3 speed = new Vector3(0, 0.4f, 0);
-    //void Start()
-    //{
-    //    this.offset = this.viewArea.height;
-    //}
+    public RectTransform rTransform;
+    Vector3 speed;
+    void Start()
+    {
+        speed = new Vector3(0, Screen.height/300f, 0);
+    }
 
     void Update()
     {
-        gameObject.transform.position += speed;
-
-        if (gameObject.transform.position.y > 600)
-            Debug.Log("Konec"); //namesto tega greš nazaj na main menu
+        if (rTransform.position.y < Screen.height - 30)
+        {
+            rTransform.position += speed;
+            //Debug.Log("Majnše  " + rTransform.position);
+        }
     }
 }

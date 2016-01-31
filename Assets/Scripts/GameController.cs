@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour {
 	[SerializeField] GameObject HUD;
 	[SerializeField] GameObject WinText;
 	[SerializeField] GameObject LoseText;
+	[SerializeField] InputField inputField;
+	[SerializeField] 
 
 	private bool checkedHighScore;
 	void Start(){
@@ -22,6 +24,9 @@ public class GameController : MonoBehaviour {
 		//uncoment when u want to set again high scores
 		//SetPlayerPrefsHighScore();
 		checkedHighScore = false;
+		//Adds a listener to the main input field and invokes a method when the value changes.
+		inputField.onValueChange.AddListener (delegate {InputValueChanged();});
+		inputField.enabled = false;
 
 	}
 
@@ -44,7 +49,9 @@ public class GameController : MonoBehaviour {
 				LoseText.GetComponent<Text>().text = "Sucks to be you player 1";
 			}
 			if(checkedHighScore == false){
-				scoringScript.checkHighScore();
+				if(scoringScript.checkHighScore()){
+					inputField.enabled = true;
+				}
 				checkedHighScore = true;
 			}
 		}
@@ -67,4 +74,9 @@ public class GameController : MonoBehaviour {
 		PlayerPrefsX.SetStringArray ("Names", tempArraySTR);
 	}
 
+
+	void InputValueChanged(){
+		Debug.Log(inputField.text);
+		PlayerPrefs.SetString("NameOfPlayer", inputField.text);
+	}
 }

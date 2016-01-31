@@ -84,7 +84,7 @@ public class Scoring : MonoBehaviour {
 	/// <summary>
 	/// check if player beat any of highscores
 	/// </summary>
-	public void checkHighScore(){
+	public void SetHighScore(string name){
 		int[] highScoreArr =  PlayerPrefsX.GetIntArray("HighScore");
 		string[] Names =  PlayerPrefsX.GetStringArray("Names");
 		string insertName = "DefaultTest";
@@ -111,13 +111,6 @@ public class Scoring : MonoBehaviour {
 		    orderby pair.Value descending
 		    select pair;
 
-		// for (int i = 0; i<highScoreArr.Length; ++i) {
-		// 	if(highScoreArr[i] < insertValue){
-		// 		//insertam v array highScoreArr na mesto i, vrednost insertValue
-		// 		Array.Insert(highScoreArr, i, insertValue);
-		// 		Array.Insert(Names, i, insertName);
-		// 	}
-		// }
 		int[] tempArrINT = new int[11]{0,0,0,0,0,0,0,0,0,0,0};
 		string[] tempArrSTR = new string[11]{"", "", "", "", "", "", "", "", "", "",""};
 		int j = 0; //stevec
@@ -141,4 +134,22 @@ public class Scoring : MonoBehaviour {
 		PlayerPrefsX.SetStringArray ("Names", tempArrSTR);
 	}
 
+
+	public bool checkHighScore(){
+		int[] highScoreArr =  PlayerPrefsX.GetIntArray("HighScore");
+		int insertValue = 0;
+		if(player1Score > player2Score){
+			insertValue = (int)player1Score;
+		}else{
+			insertValue = (int)player2Score;
+		}
+		//ce je od katerekoli vrednosti vecji vrne true in gre iz funkcije
+		for (int i = 0; i<highScoreArr.Length; ++i) {
+			if(highScoreArr[i] < insertValue){
+				return true;
+			}
+		}
+		//ce ne pa vrne false
+		return false;
+	}
 }

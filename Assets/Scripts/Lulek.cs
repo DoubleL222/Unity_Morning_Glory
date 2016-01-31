@@ -11,11 +11,24 @@ public class Lulek : MonoBehaviour
 	private float moc = 150f;
 	public GameObject PissSystem;
 
+	private MissAudioPlayer MAP;
+
 	private ParticleSystem PSPS;
+
+	private AudioSource thisAudioSource;
+	private int SplatID =0;
 
 	void Start ()
     {
+		thisAudioSource = gameObject.GetComponent<AudioSource> () as AudioSource;
+		MAP = Object.FindObjectOfType<MissAudioPlayer> () as MissAudioPlayer;
 		PSPS = PissSystem.GetComponent<ParticleSystem> () as ParticleSystem;
+	}
+
+	public void playFinishSound(){
+		if (!thisAudioSource.isPlaying) {
+			thisAudioSource.Play ();
+		}
 	}
 
 	public void ActivatePissSystem(bool activate){
@@ -34,6 +47,9 @@ public class Lulek : MonoBehaviour
 			GameObject temp = (GameObject)Instantiate(curek, gameObject.transform.position, Quaternion.LookRotation(transform.up)*Quaternion.Euler(new Vector3(90.0f, 0f, 0f)));
 			Curek1 curekScript = temp.GetComponent<Curek1> ();
 			curekScript.PissSystem = PissSystem;
+			curekScript.SplatID = SplatID;
+			curekScript.MAP = MAP;
+			SplatID++;
 			Rigidbody CurekRBD = temp.GetComponent<Rigidbody> ();
 			CurekRBD.AddForce(transform.up * PissForce * moc);
 			//temp.transform.forward = CurekRBD.velocity;

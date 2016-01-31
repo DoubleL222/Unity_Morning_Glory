@@ -3,11 +3,17 @@ using System.Collections;
 
 public class Curek1 : MonoBehaviour
 {
-	
+	public GameObject pissSpot;
+	public GameObject pissSpotSmall	;
+
+	public MissAudioPlayer MAP;
+
     public GameObject PissSystem;
 	//public ParticleSystem PissSystemPS;
     public Vector3 offsetKapljic;
 	private Vector3 rotatePiss = new Vector3(90.0f, 0, 0);
+
+	public int SplatID;
 
 	private Rigidbody rbd;
 
@@ -27,7 +33,26 @@ public class Curek1 : MonoBehaviour
         //if (c.gameObject.tag != "CurekLevi" && c.gameObject.tag != "CurekDesni")
         if (c.gameObject.tag != gameObject.tag)//če ni isti curek
         {
-			if (PissSystem!=null && c.gameObject.tag != "Water")
+			if (c.gameObject.tag == "Room") {
+				if (SplatID % 2 == 0) {
+					GameObject tempSplat = Instantiate (pissSpot, c.contacts [0].point, Quaternion.identity) as GameObject;
+					tempSplat.transform.forward = -c.contacts [0].normal;
+					tempSplat.transform.RotateAround (transform.position, -c.contacts [0].normal, Random.Range (-360, 360));
+					//Debug.Log(c.contacts[0].normal);
+				}
+			} else if (c.gameObject.tag == "RoomSmall") {
+				if (SplatID % 2 == 0) {
+					GameObject tempSplat = Instantiate (pissSpotSmall, c.contacts [0].point, Quaternion.identity) as GameObject;
+					tempSplat.transform.forward = -c.contacts [0].normal;
+					tempSplat.transform.RotateAround (transform.position, -c.contacts [0].normal, Random.Range (-360, 360));
+				}
+			} 
+			if (c.gameObject.tag != "Water") {
+				MAP.playSound ();
+			}
+		
+
+			if (PissSystem!=null)
             {
               /*  for (int i = 0; i < 3; i++)
                 {
@@ -38,8 +63,9 @@ public class Curek1 : MonoBehaviour
 				PissSystem.transform.position = c.contacts [0].point;
 				//GameObject pSystem = Instantiate (kapljica, c.contacts [0].point, Quaternion.LookRotation (c.contacts [0].normal)) as GameObject;
             }
-
-            Destroy(gameObject);
+			if (c.gameObject.tag != "RoomIgnore") {
+				Destroy (gameObject);
+			}
         }
     }
     

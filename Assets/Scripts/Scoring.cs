@@ -5,7 +5,9 @@
 //Description: Sript for scoring pee
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class Scoring : MonoBehaviour {
 
@@ -100,4 +102,75 @@ public class Scoring : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// check if player beat any of highscores
+	/// </summary>
+	public void SetHighScore(string name){
+		int[] highScoreArr =  PlayerPrefsX.GetIntArray("HighScore");
+		string[] Names =  PlayerPrefsX.GetStringArray("Names");
+		string insertName = "DefaultTest";
+
+		Dictionary<string, int> dictionary = new Dictionary<string, int>();
+		for (int i = 0; i<highScoreArr.Length; ++i) {
+			dictionary.Add(Names[i], highScoreArr[i]);
+		}
+
+		//false player2, true player1
+		bool winner = false;
+		int insertValue = 0;
+		if(player1Score > player2Score){
+			winner = true;
+			insertValue = (int)player1Score;
+		}else{
+			winner = true;
+			insertValue = (int)player2Score;
+		}
+		//add values which will be sorted
+		dictionary.Add(insertName, insertValue);
+		//create new dictionary of sorted pair
+		var items = from pair in dictionary
+		    orderby pair.Value descending
+		    select pair;
+
+		int[] tempArrINT = new int[11]{0,0,0,0,0,0,0,0,0,0,0};
+		string[] tempArrSTR = new string[11]{"", "", "", "", "", "", "", "", "", "",""};
+		int j = 0; //stevec
+		foreach (KeyValuePair<string, int> pair in items) {
+			tempArrSTR[j] = pair.Key;
+			tempArrINT[j] = pair.Value;
+			j++;
+		}
+
+		//naredim nov array ki je velik samo deset in samo prvih deset dam notri tako da potem zadnji odpade
+		//int[] tempArrINT = new int[]{0,0,0,0,0,0,0,0,0,0};
+		for (int i = 0; i<10; ++i){
+			tempArrINT[i] = highScoreArr[i];
+		}
+		//string[] tempArrSTR = new string[10]{"", "", "", "", "", "", "", "", "", ""};
+		for (int i = 0; i<10; ++i){
+			tempArrSTR[i] = Names[i];
+		}
+
+		PlayerPrefsX.SetIntArray ("HighScore", tempArrINT);
+		PlayerPrefsX.SetStringArray ("Names", tempArrSTR);
+	}
+
+
+	public bool checkHighScore(){
+		int[] highScoreArr =  PlayerPrefsX.GetIntArray("HighScore");
+		int insertValue = 0;
+		if(player1Score > player2Score){
+			insertValue = (int)player1Score;
+		}else{
+			insertValue = (int)player2Score;
+		}
+		//ce je od katerekoli vrednosti vecji vrne true in gre iz funkcije
+		for (int i = 0; i<highScoreArr.Length; ++i) {
+			if(highScoreArr[i] < insertValue){
+				return true;
+			}
+		}
+		//ce ne pa vrne false
+		return false;
+	}
 }

@@ -15,6 +15,8 @@ public class Effects : MonoBehaviour {
 	[SerializeField] BlurOptimized blurOptimized1;
 	[SerializeField] BlurOptimized blurOptimized2;
 	[SerializeField] GameObject cameraPosition;
+	[SerializeField] Renderer barvaVode;
+	[SerializeField] Scoring scoringScript;
 	//Luc
 	private int zacKotRotacije = 45;
 	private int trKotRotacije = 0;
@@ -40,6 +42,8 @@ public class Effects : MonoBehaviour {
 	/// </summary>
 	void Start(){
 
+		barvaVode.material.SetColor("_RefrColor", Color.red);
+
 		kvocientOpitosti = kvocientOpitostiPlus;
 
 		switch (LevelMode) {
@@ -49,8 +53,9 @@ public class Effects : MonoBehaviour {
 			  blurOptimized2.enabled = false;
 			  break;
 			case 2:
-				blurOptimized1.enabled = false;
-				blurOptimized2.enabled = false;
+				LightSource.SetActive(false);
+				blurOptimized1.enabled = true;
+				blurOptimized2.enabled = true;
 			  break;
 			case 0:
 			  LightSource.SetActive(false);
@@ -69,6 +74,9 @@ public class Effects : MonoBehaviour {
 	/// </summary>
 
 	void Update(){
+
+		barvaVode.material.SetColor("_RefrColor", Color.Lerp(Color.white, Color.yellow, (float) (scoringScript.player2Score + scoringScript.player1Score) / (float)scoringScript.amountOfScanjeSplosni));
+
 		switch (LevelMode) {
 			case 1:
 				LightSource.transform.Rotate(0,1 * smerRotacije,0, Space.Self);
@@ -98,11 +106,11 @@ public class Effects : MonoBehaviour {
 			case 0:
 				//if(cameraEffect == 1){
 					//levo desno
-					cameraPosition.transform.Rotate(0, smerObracanja,0, Space.Self);
-					trKotObr += smerObracanja;
-					if(Math.Abs(trKotObr) >= Math.Abs(kotObracanja)){
-						smerObracanja *= -1;
-					}
+					//cameraPosition.transform.Rotate(0, smerObracanja,0, Space.Self);
+					//trKotObr += smerObracanja;
+					//if(Math.Abs(trKotObr) >= Math.Abs(kotObracanja)){
+					//	smerObracanja *= -1;
+					//}
 				//}else{
 				//	if()
 				//}

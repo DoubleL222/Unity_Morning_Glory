@@ -5,6 +5,7 @@ public class Curek1 : MonoBehaviour
 {
 	
     public GameObject kapljica;
+    public Vector3 offsetKapljic;
 	private Vector3 rotatePiss = new Vector3(90.0f, 0, 0);
 
 	private Rigidbody rbd;
@@ -22,36 +23,29 @@ public class Curek1 : MonoBehaviour
 
     void OnCollisionEnter(Collision c)
     {
-<<<<<<< HEAD
-        //Debug.Log(c.contacts[0].point);
-        //Debug.Log(c.contacts.Length);
-		if (c.gameObject.tag != "CurekLevi" && c.gameObject.tag != "CurekDesni")//če ni isti curek
-=======
+        //if (c.gameObject.tag != "CurekLevi" && c.gameObject.tag != "CurekDesni")
         if (c.gameObject.tag != gameObject.tag)//če ni isti curek
->>>>>>> 430b6ed70b6988aa43ad8e14dda29f536cd93935
         {
-           /* if (kapljica != null)
+			if (kapljica != null && c.gameObject.tag != "Water")
             {
-<<<<<<< HEAD
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 3; i++)
                 {
-                    GameObject temp = (GameObject)Instantiate(kapljica, gameObject.transform.position, Quaternion.identity);
-                    addRandomForce(temp.GetComponent<Rigidbody>());
+                    Vector3 v = gameObject.transform.position + offsetKapljic;
+                    GameObject g1 = (GameObject)Instantiate(kapljica, v, Quaternion.identity);
+					addRandomForce(g1.GetComponent<Rigidbody>(), g1.transform);
                 }
-            }*/
-=======
-                    Instantiate(kapljica, gameObject.transform.position, Quaternion.identity);
             }
->>>>>>> 430b6ed70b6988aa43ad8e14dda29f536cd93935
 
             Destroy(gameObject);
         }
     }
-
-    ////Katastrofa
-    //void addRandomForce(Rigidbody rb)
-    //{
-    //    Vector3 random = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1));
-    //    rb.AddForce(random * 30);    
-    //}
+    
+	void addRandomForce(Rigidbody rb, Transform kTransform)
+    {
+        Vector3 random = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 2f), Random.Range(-1f, 1f));
+		float randomS = Random.Range (0.01f, 0.05f);
+		Vector3 randomScale = new Vector3 (randomS, randomS, randomS);
+        rb.AddForce(random * 30);
+		kTransform.localScale = randomScale;
+    }
 }

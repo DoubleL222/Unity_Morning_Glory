@@ -13,8 +13,8 @@ public class Curek1 : MonoBehaviour
 
 	void Start(){
 		rbd = GetComponent<Rigidbody> ();
-		transform.forward = rbd.velocity;
-		transform.Rotate (rotatePiss);
+		//transform.forward = rbd.velocity;
+		//transform.Rotate (rotatePiss);
 
 	}
 	void FixedUpdate(){
@@ -24,7 +24,8 @@ public class Curek1 : MonoBehaviour
 
     void OnCollisionEnter(Collision c)
     {
-		if (c.gameObject.tag != gameObject.tag)//če ni isti curek
+        //if (c.gameObject.tag != "CurekLevi" && c.gameObject.tag != "CurekDesni")
+        if (c.gameObject.tag != gameObject.tag)//če ni isti curek
         {
 			if (PissSystem!=null && c.gameObject.tag != "Water")
             {

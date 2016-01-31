@@ -14,15 +14,16 @@ public class Scoring : MonoBehaviour {
 
 	public double player1Score = 0;
 	public double player2Score = 0;
-	public float amountOfScanjePly1 = 100000;
-	public float amountOfScanjePly2 = 100000;
+	public int amountOfScanjePly1 = 1000;
+	public int amountOfScanjePly2 = 1000;
+	public int amountOfScanjeSplosni = 1000;//prilagaja obema amountama
 	private float zacetniCas;
 	private Vector3 sredina = new Vector3(0.4f,-0.5f, -0.2f);
 
 	void Start(){	
 		zacetniCas = Time.time;
 		//dvigKolicnik = 0.3f / (amountOfScanjePly1 + amountOfScanjePly2);
-		dvigKolicnik = System.Convert.ToSingle(0.025f/(amountOfScanjePly1+amountOfScanjePly2));
+		dvigKolicnik = System.Convert.ToSingle(0.05f/(float)(2 * amountOfScanjeSplosni));
 	}
 
 	/// <summary>
@@ -30,8 +31,8 @@ public class Scoring : MonoBehaviour {
 	/// </summary>
 	void OnCollisionEnter(Collision collision){
 		//Debug.Log(collision.collider.gameObject.layer);
-		Debug.Log(collision.contacts[0].point);
-		Debug.Log("razdalja: " + System.Convert.ToSingle(Math.Round(PitagorovIzrek(sredina, collision.contacts[0].point), 1, MidpointRounding.ToEven)).ToString());
+		//Debug.Log(collision.contacts[0].point);
+		//Debug.Log("razdalja: " + System.Convert.ToSingle(Math.Round(PitagorovIzrek(sredina, collision.contacts[0].point), 1, MidpointRounding.ToEven)).ToString());
 		//Debug.Log((zacetniCas - Time.time).ToString());
 		if(collision.collider.gameObject.layer  == LayerMask.NameToLayer("Curek1")){
 			//ta vrtsica najprej poklice funkcijo pitagorv izrek
@@ -42,7 +43,7 @@ public class Scoring : MonoBehaviour {
 			double pretekliCas = Math.Round(System.Convert.ToDouble(zacetniCas - Time.time), 1, MidpointRounding.ToEven);
 
 			player1Score += 1 - 1 * razdalja - 0.01 * pretekliCas;
-			Debug.Log(player1Score);
+			//Debug.Log(player1Score);
 			//destroy pee
 			Destroy(collision.collider.gameObject, 0.0f);
 		}
@@ -56,7 +57,7 @@ public class Scoring : MonoBehaviour {
 			Destroy(collision.collider.gameObject, 0.0f);
 		}
 		//Dvig vode kadar ga zadane curek scanja
-		if(player1Score + player2Score < 200){
+		if(player1Score + player2Score < 2 * amountOfScanjeSplosni){
 			ObjectWater.transform.position = new Vector3(ObjectWater.transform.position.x, ObjectWater.transform.position.y  + dvigKolicnik, ObjectWater.transform.position.z);	
 		}
 		

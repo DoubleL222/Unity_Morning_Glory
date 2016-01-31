@@ -9,12 +9,18 @@ public class Lulek : MonoBehaviour
     public smer smerCurka = smer.Naprej;
     public GameObject curek;
 	private float moc = 150f;
+	public GameObject PissSystem;
 
-	//void Start ()
-    //{
-	
-	//}
-	
+	private ParticleSystem PSPS;
+
+	void Start ()
+    {
+		PSPS = PissSystem.GetComponent<ParticleSystem> () as ParticleSystem;
+	}
+
+	public void ActivatePissSystem(bool activate){
+		PSPS.enableEmission = activate;
+	}
 
 	void Update ()
     {
@@ -26,6 +32,8 @@ public class Lulek : MonoBehaviour
 		{
 			
 			GameObject temp = (GameObject)Instantiate(curek, gameObject.transform.position, pissRot*Quaternion.Euler(new Vector3(90.0f, 0f, 0f)));
+			Curek1 curekScript = temp.GetComponent<Curek1> ();
+			curekScript.PissSystem = PissSystem;
 			Rigidbody CurekRBD = temp.GetComponent<Rigidbody> ();
 			CurekRBD.AddForce(transform.forward * PissForce * moc);
 			temp.transform.forward = CurekRBD.velocity;

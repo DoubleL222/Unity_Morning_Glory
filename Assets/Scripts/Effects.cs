@@ -14,7 +14,7 @@ public class Effects : MonoBehaviour {
 	[SerializeField] GameObject LightSource;
 	[SerializeField] BlurOptimized blurOptimized1;
 	[SerializeField] BlurOptimized blurOptimized2;
-	[SerializeField] GameObject cameraPosition;
+	//[SerializeField] GameObject cameraPosition;
 	[SerializeField] Renderer barvaVode;
 	[SerializeField] Scoring scoringScript;
 	//Luc

@@ -46,10 +46,12 @@ public class LukaHydrasController: MonoBehaviour
 				} else {
 					switch (hand.m_hand) {
 					case SixenseHands.LEFT:
-						leviLulek.ActivatePissSystem (false);
+						if (scoringScript.amountOfScanjePly1 > 0)
+							leviLulek.ActivatePissSystem (false);
 						break;
 					case SixenseHands.RIGHT:
-						desniLulek.ActivatePissSystem (false);
+						if (scoringScript.amountOfScanjePly2 > 0)
+							desniLulek.ActivatePissSystem (false);
 						break;
 					}
 				}

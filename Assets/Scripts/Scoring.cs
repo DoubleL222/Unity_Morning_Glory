@@ -5,7 +5,9 @@
 //Description: Sript for scoring pee
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class Scoring : MonoBehaviour {
 
@@ -77,6 +79,66 @@ public class Scoring : MonoBehaviour {
 	double PitagorovIzrek(Vector3 kord1, Vector3 kord2){
 		double rez = Math.Pow(Math.Abs(kord1.x - kord2.x), 2) +  Math.Pow(Math.Abs(kord1.z - kord2.z), 2);
 		return Mathf.Sqrt((float)rez);
+	}
+
+	/// <summary>
+	/// check if player beat any of highscores
+	/// </summary>
+	public void checkHighScore(){
+		int[] highScoreArr =  PlayerPrefsX.GetIntArray("HighScore");
+		string[] Names =  PlayerPrefsX.GetStringArray("Names");
+		string insertName = "DefaultTest";
+
+		Dictionary<string, int> dictionary = new Dictionary<string, int>();
+		for (int i = 0; i<highScoreArr.Length; ++i) {
+			dictionary.Add(Names[i], highScoreArr[i]);
+		}
+
+		//false player2, true player1
+		bool winner = false;
+		int insertValue = 0;
+		if(player1Score > player2Score){
+			winner = true;
+			insertValue = (int)player1Score;
+		}else{
+			winner = true;
+			insertValue = (int)player2Score;
+		}
+		//add values which will be sorted
+		dictionary.Add(insertName, insertValue);
+		//create new dictionary of sorted pair
+		var items = from pair in dictionary
+		    orderby pair.Value descending
+		    select pair;
+
+		// for (int i = 0; i<highScoreArr.Length; ++i) {
+		// 	if(highScoreArr[i] < insertValue){
+		// 		//insertam v array highScoreArr na mesto i, vrednost insertValue
+		// 		Array.Insert(highScoreArr, i, insertValue);
+		// 		Array.Insert(Names, i, insertName);
+		// 	}
+		// }
+		int[] tempArrINT = new int[]{0,0,0,0,0,0,0,0,0,0};
+		string[] tempArrSTR = new string[10]{"", "", "", "", "", "", "", "", "", ""};
+		int j = 0; //stevec
+		foreach (KeyValuePair<string, int> pair in items) {
+			tempArrSTR[j] = pair.Key;
+			tempArrINT[j] = pair.Value;
+			j++;
+		}
+
+		//naredim nov array ki je velik samo deset in samo prvih deset dam notri tako da potem zadnji odpade
+		//int[] tempArrINT = new int[]{0,0,0,0,0,0,0,0,0,0};
+		for (int i = 0; i<10; ++i){
+			tempArrINT[i] = highScoreArr[i];
+		}
+		//string[] tempArrSTR = new string[10]{"", "", "", "", "", "", "", "", "", ""};
+		for (int i = 0; i<10; ++i){
+			tempArrSTR[i] = Names[i];
+		}
+
+		PlayerPrefsX.SetIntArray ("HighScore", tempArrINT);
+		PlayerPrefsX.SetStringArray ("Names", tempArrSTR);
 	}
 
 }

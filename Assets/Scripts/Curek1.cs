@@ -4,7 +4,8 @@ using System.Collections;
 public class Curek1 : MonoBehaviour
 {
 	
-    public GameObject kapljica;
+    public GameObject PissSystem;
+	//public ParticleSystem PissSystemPS;
     public Vector3 offsetKapljic;
 	private Vector3 rotatePiss = new Vector3(90.0f, 0, 0);
 
@@ -26,14 +27,16 @@ public class Curek1 : MonoBehaviour
         //if (c.gameObject.tag != "CurekLevi" && c.gameObject.tag != "CurekDesni")
         if (c.gameObject.tag != gameObject.tag)//če ni isti curek
         {
-			if (kapljica != null && c.gameObject.tag != "Water")
+			if (PissSystem!=null && c.gameObject.tag != "Water")
             {
-                for (int i = 0; i < 1; i++)
+              /*  for (int i = 0; i < 3; i++)
                 {
                     Vector3 v = gameObject.transform.position + offsetKapljic;
                     GameObject g1 = (GameObject)Instantiate(kapljica, v, Quaternion.identity);
 					addRandomForce(g1.GetComponent<Rigidbody>(), g1.transform);
-                }
+                }*/
+				PissSystem.transform.position = c.contacts [0].point;
+				//GameObject pSystem = Instantiate (kapljica, c.contacts [0].point, Quaternion.LookRotation (c.contacts [0].normal)) as GameObject;
             }
 
             Destroy(gameObject);

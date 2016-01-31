@@ -29,6 +29,7 @@ public class LukaHydrasController: MonoBehaviour
 						if (scoringScript.amountOfScanjePly1 > 0) {
 							leviLulek.SpawnPiss (hand.gameObject.transform.rotation, hand.m_controller.Trigger);
 							scoringScript.PlayerAmountDecrease (1);
+							leviLulek.ActivatePissSystem (true);
 						}
 						break;
 					case SixenseHands.RIGHT:
@@ -36,9 +37,21 @@ public class LukaHydrasController: MonoBehaviour
 							desniLulek.SpawnPiss (hand.gameObject.transform.rotation, hand.m_controller.Trigger);
 							//leviLulek.SpawnPiss ();
 							scoringScript.PlayerAmountDecrease (2);
+							desniLulek.ActivatePissSystem (true);
 						}
 						break;
 					default:
+						break;
+					}
+				} else {
+					switch (hand.m_hand) {
+					case SixenseHands.LEFT:
+						if (scoringScript.amountOfScanjePly1 > 0)
+							leviLulek.ActivatePissSystem (false);
+						break;
+					case SixenseHands.RIGHT:
+						if (scoringScript.amountOfScanjePly2 > 0)
+							desniLulek.ActivatePissSystem (false);
 						break;
 					}
 				}

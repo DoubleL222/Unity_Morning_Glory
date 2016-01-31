@@ -15,11 +15,13 @@ public class GameController : MonoBehaviour {
 	[SerializeField] GameObject WinText;
 	[SerializeField] GameObject LoseText;
 
+	private bool checkedHighScore;
 	void Start(){
 		EndScreen.SetActive(false);
 		HUD.SetActive(true);
 		//uncoment when u want to set again high scores
-		SetPlayerPrefsHighScore();
+		//SetPlayerPrefsHighScore();
+		checkedHighScore = false;
 
 	}
 
@@ -41,8 +43,10 @@ public class GameController : MonoBehaviour {
 				WinText.GetComponent<Text>().text = "Player 2 WINS!";
 				LoseText.GetComponent<Text>().text = "Sucks to be you player 1";
 			}
-
-			scoringScript.checkHighScore();
+			if(checkedHighScore == false){
+				scoringScript.checkHighScore();
+				checkedHighScore = true;
+			}
 		}
 	}
 

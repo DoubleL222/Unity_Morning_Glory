@@ -118,8 +118,8 @@ public class Scoring : MonoBehaviour {
 		// 		Array.Insert(Names, i, insertName);
 		// 	}
 		// }
-		int[] tempArrINT = new int[]{0,0,0,0,0,0,0,0,0,0};
-		string[] tempArrSTR = new string[10]{"", "", "", "", "", "", "", "", "", ""};
+		int[] tempArrINT = new int[11]{0,0,0,0,0,0,0,0,0,0,0};
+		string[] tempArrSTR = new string[11]{"", "", "", "", "", "", "", "", "", "",""};
 		int j = 0; //stevec
 		foreach (KeyValuePair<string, int> pair in items) {
 			tempArrSTR[j] = pair.Key;

@@ -9,9 +9,10 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour {
 
 	GameObject[] findGameObj;
+    public RectTransform transformCredits;
 
-	// Use this for initialization
-	void Awake () {
+    // Use this for initialization
+    void Awake () {
 		findGameObj = GameObject.FindGameObjectsWithTag("Menu");
 		enableMenu("MainMenu");
 	}
@@ -38,6 +39,9 @@ public class UIController : MonoBehaviour {
 		foreach (GameObject elem in findGameObj) {
 			if(elem.name == nameOfMenu){
 				elem.SetActive(true);
+                if (elem.name == "CreditsMenu")
+                    transformCredits.position = new Vector3(transformCredits.position.x, 0, transformCredits.position.z);
+
 			}else{
 				elem.SetActive(false);
 			}

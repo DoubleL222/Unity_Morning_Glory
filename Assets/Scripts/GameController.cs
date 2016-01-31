@@ -19,14 +19,14 @@ public class GameController : MonoBehaviour {
 
 	private bool checkedHighScore;
 	void Start(){
-		EndScreen.SetActive(false);
+		//EndScreen.SetActive(false);
 		HUD.SetActive(true);
 		//uncoment when u want to set again high scores
 		//SetPlayerPrefsHighScore();
 		checkedHighScore = false;
 		//Adds a listener to the main input field and invokes a method when the value changes.
 		inputField.onValueChange.AddListener (delegate {InputValueChanged();});
-		inputField.enabled = false;
+		//inputField.enabled = false;
 
 	}
 

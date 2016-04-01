@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
 	[SerializeField] InputField inputField;
 	[SerializeField] 
 
+	bool inMenu = false;
 	private bool checkedHighScore;
 	void Start(){
 		EndScreen.SetActive(false);
@@ -35,7 +36,7 @@ public class GameController : MonoBehaviour {
 	/// </summary>
 	void Update () {
 		//when both are out of scanje
-		if(scoringScript.amountOfScanjePly1 == 0 && scoringScript.amountOfScanjePly2 == 0){
+		if(scoringScript.amountOfScanjePly1 <= 0 && scoringScript.amountOfScanjePly2 <= 0){
 			EndScreen.SetActive(true);
 			HUD.SetActive(false);
 			//inline if stavek: condition ? first_expression : second_expression;
@@ -55,6 +56,18 @@ public class GameController : MonoBehaviour {
 				checkedHighScore = true;
 			}
 		}
+		if (inMenu && Input.GetKeyDown (KeyCode.P)) {
+			Debug.Log ("UNPAUSED GAME");
+			EndScreen.SetActive(false);
+			HUD.SetActive(true);
+			inMenu = false;
+		}
+		if (Input.GetKeyDown (KeyCode.P)) {
+			Debug.Log ("PAUSED GAME");
+			EndScreen.SetActive(true);
+			HUD.SetActive(false);
+			inMenu = true;
+		}
 	}
 
 	public void RestartScene(){
@@ -63,7 +76,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void GotoMainMenu(){
-		Application.LoadLevel ("MainMenu");
+		Application.LoadLevel ("MainMenu-Mouse");
 	}
 
 

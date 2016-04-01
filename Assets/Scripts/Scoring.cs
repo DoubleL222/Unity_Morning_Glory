@@ -17,7 +17,7 @@ public class Scoring : MonoBehaviour {
 	public double player1Score = 0;
 	public double player2Score = 0;
 	public int amountOfScanjePly1 = 1000;
-	public int amountOfScanjePly2 = 1000;
+	public int amountOfScanjePly2 = 0;
 	public int amountOfScanjeSplosni = 1000;//prilagaja obema amountama
 	private float zacetniCas;
 	private Vector3 sredina = new Vector3(0.4f,-0.5f, -0.2f);
@@ -98,7 +98,6 @@ public class Scoring : MonoBehaviour {
 	void FixedUpdate(){
 		if (LastPissTime + 0.2f < Time.time) {
 			NoiseMaker.Pause ();
-			Debug.Log ("PAUSING NOISE");
 		}
 	}
 

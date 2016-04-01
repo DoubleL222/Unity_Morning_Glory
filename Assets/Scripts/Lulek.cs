@@ -40,7 +40,7 @@ public class Lulek : MonoBehaviour
         
 	}
 
-	public void SpawnPiss(Quaternion pissRot, float PissForce){
+	public void SpawnPiss(float PissForce){
 		if (curek != null)
 		{
 			//*Quaternion.Euler(new Vector3(90.0f, 0f, 0f))
